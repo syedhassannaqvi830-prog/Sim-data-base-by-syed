@@ -1,22 +1,27 @@
 
-  function drawMatrix() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#00f2ff";
-    ctx.font = fontSize + "px monospace";
+      <header class="text-center mb-6">
+      <h1 id="main-title" class="text-4xl font-bold text-green-400">Sim Database</h1>
+      <h2 class="text-xl text-blue-300 mt-2">Search Records</h2>
+    </header>
 
-    for (let i = 0; i < drops.length; i++) {
-      const char = chars.charAt(Math.floor(Math.random() * chars.length));
-      ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i]++;
-    }
-  }
-  setInterval(drawMatrix, 30);
-</script>
-
-</body>
-</html>
+    <form method="POST" class="space-y-4">
+      <label for="inputValue" class="sr-only">Phone Number or CNIC</label>
+      <input
+        type="text"
+        id="inputValue"
+        name="inputValue"
+        placeholder="03xxxxxxxxx or 13-digit CNIC"
+        pattern="(03\d{9}|\d{13})"
+        title="Enter a phone number starting with 03 followed by 9 digits, or a 13-digit CNIC number"
+        autocomplete="off"
+        inputmode="numeric"
+        required
+        class="w-full p-3 rounded-lg bg-black text-white border border-gray-700 focus:ring-2 focus:ring-green-400 focus:outline-none"
+      />
+      <button
+        type="submit"
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold p-3 rounded-lg transition duration-200"
+      >
+        Search
+      </button>
+    </form>
